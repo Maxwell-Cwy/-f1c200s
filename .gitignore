@@ -1,0 +1,189 @@
+# ============================================================
+# F1C200S Embedded Linux BSP
+# Git Ignore Rules
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 1. Cross-compilation toolchains
+# ------------------------------------------------------------
+
+/toolchain/
+
+
+# ------------------------------------------------------------
+# 2. Third-party source trees
+# ------------------------------------------------------------
+
+# Linux kernel source
+/kernel/linux-6.14.2/
+/kernel/linux-5.7.1/
+
+# U-Boot source
+/bootloader/u-boot/
+
+# Buildroot source
+/rootfs/buildroot/
+
+# Archived third-party source and reference files
+/archives/
+
+
+# ------------------------------------------------------------
+# 3. Generated build outputs
+# ------------------------------------------------------------
+
+/output/
+/images/
+
+# Buildroot output
+**/buildroot/output/
+
+# Temporary build directories
+**/build/
+**/build-*/
+**/out/
+
+
+# ------------------------------------------------------------
+# 4. Linux kernel build artifacts
+# ------------------------------------------------------------
+
+*.o
+*.a
+*.so
+*.ko
+*.mod
+*.mod.c
+*.mod.o
+*.cmd
+
+*.dtb
+*.dtbo
+*.dtb.S
+
+Module.symvers
+modules.order
+
+.tmp_versions/
+.tmp_*/
+.tmp_*.o
+
+*.order
+*.symtypes
+
+vmlinux
+vmlinux.*
+System.map
+
+zImage
+uImage
+Image
+Image.gz
+
+
+# ------------------------------------------------------------
+# 5. U-Boot build artifacts
+# ------------------------------------------------------------
+
+u-boot.bin
+u-boot.img
+u-boot.elf
+u-boot.map
+u-boot.sym
+u-boot.cfg
+
+u-boot-sunxi-with-spl.bin
+
+spl/
+tpl/
+
+
+# ------------------------------------------------------------
+# 6. Root filesystem and disk images
+# ------------------------------------------------------------
+
+*.img
+*.iso
+*.qcow2
+*.vmdk
+*.vdi
+
+*.ext2
+*.ext3
+*.ext4
+*.squashfs
+*.cpio
+*.cpio.gz
+
+rootfs.tar
+rootfs.tar.gz
+rootfs.tar.xz
+
+*.ubi
+*.ubifs
+*.jffs2
+
+
+# ------------------------------------------------------------
+# 7. Logs and temporary files
+# ------------------------------------------------------------
+
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+/docs/logs/
+
+
+# ------------------------------------------------------------
+# 8. Python cache
+# ------------------------------------------------------------
+
+__pycache__/
+*.pyc
+*.pyo
+
+.venv/
+venv/
+
+
+# ------------------------------------------------------------
+# 9. IDE and editor files
+# ------------------------------------------------------------
+
+.vscode/
+.idea/
+
+*.code-workspace
+
+
+# ------------------------------------------------------------
+# 10. Operating system files
+# ------------------------------------------------------------
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# ------------------------------------------------------------
+# 11. Keep project source and configuration
+# ------------------------------------------------------------
+
+!README.md
+!.gitignore
+
+!/scripts/
+!/board/
+!/drivers/
+!/applications/
+!/docs/
+
+# Keep hardware documentation
+!/docs/hardware/
+!/docs/screenshots/
