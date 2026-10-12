@@ -1,62 +1,44 @@
 # ============================================================
 # F1C200S Embedded Linux BSP
-# Git Ignore Rules
+#
+# Track all source code:
+#   Linux Kernel / U-Boot / Buildroot / Drivers / Applications
+#
+# Ignore generated files, build artifacts and local tools.
 # ============================================================
 
 
 # ------------------------------------------------------------
-# 1. Cross-compilation toolchains
+# 1. Toolchains (prebuilt binaries)
 # ------------------------------------------------------------
 
 /toolchain/
 
 
 # ------------------------------------------------------------
-# 2. Third-party source trees
-# ------------------------------------------------------------
-
-# Linux kernel source
-/kernel/linux-6.14.2/
-/kernel/linux-5.7.1/
-
-# U-Boot source
-/bootloader/u-boot/
-
-# Buildroot source
-/rootfs/buildroot/
-
-# Archived third-party source and reference files
-/archives/
-
-
-# ------------------------------------------------------------
-# 3. Generated build outputs
+# 2. Project output and generated images
 # ------------------------------------------------------------
 
 /output/
 /images/
 
-# Buildroot output
-**/buildroot/output/
-
-# Temporary build directories
-**/build/
-**/build-*/
-**/out/
-
 
 # ------------------------------------------------------------
-# 4. Linux kernel build artifacts
+# 3. Linux kernel generated files
 # ------------------------------------------------------------
 
 *.o
+*.o.*
 *.a
 *.so
+*.so.*
 *.ko
+*.ko.*
 *.mod
 *.mod.c
 *.mod.o
 *.cmd
+.*.cmd
 
 *.dtb
 *.dtbo
@@ -67,10 +49,6 @@ modules.order
 
 .tmp_versions/
 .tmp_*/
-.tmp_*.o
-
-*.order
-*.symtypes
 
 vmlinux
 vmlinux.*
@@ -78,14 +56,28 @@ System.map
 
 zImage
 uImage
-Image
 Image.gz
 
+# Kernel generated configuration and headers
+**/include/generated/
+**/include/config/
+**/arch/*/include/generated/
+
+# Kernel temporary files
+*.symtypes
+*.order
+*.gcno
+*.gcda
+
+# Kernel build metadata
+*.dwo
+*.su
+
 
 # ------------------------------------------------------------
-# 5. U-Boot build artifacts
+# 4. U-Boot generated files
 # ------------------------------------------------------------
-
+/bootloader/u-boot/u-boot
 u-boot.bin
 u-boot.img
 u-boot.elf
@@ -95,12 +87,39 @@ u-boot.cfg
 
 u-boot-sunxi-with-spl.bin
 
-spl/
-tpl/
+MLO
+SPL
+
+# U-Boot generated binaries
+*.bin
+*.elf
+*.map
 
 
 # ------------------------------------------------------------
-# 6. Root filesystem and disk images
+# 5. Buildroot generated output
+# ------------------------------------------------------------
+
+/rootfs/buildroot/output/
+
+# Root filesystem archives
+rootfs.tar
+rootfs.tar.gz
+rootfs.tar.xz
+
+*.cpio
+*.cpio.gz
+*.ext2
+*.ext3
+*.ext4
+*.squashfs
+*.jffs2
+*.ubi
+*.ubifs
+
+
+# ------------------------------------------------------------
+# 6. Disk images
 # ------------------------------------------------------------
 
 *.img
@@ -109,24 +128,20 @@ tpl/
 *.vmdk
 *.vdi
 
-*.ext2
-*.ext3
-*.ext4
-*.squashfs
-*.cpio
-*.cpio.gz
 
-rootfs.tar
-rootfs.tar.gz
-rootfs.tar.xz
+# ------------------------------------------------------------
+# 7. Compiled executables and temporary binaries
+# ------------------------------------------------------------
 
-*.ubi
-*.ubifs
-*.jffs2
+/drivers/led_driver/led
+/drivers/led_driver/led_b
+
+*.exe
+*.out
 
 
 # ------------------------------------------------------------
-# 7. Logs and temporary files
+# 8. Logs and temporary files
 # ------------------------------------------------------------
 
 *.log
@@ -141,7 +156,7 @@ rootfs.tar.xz
 
 
 # ------------------------------------------------------------
-# 8. Python cache
+# 9. Python cache
 # ------------------------------------------------------------
 
 __pycache__/
@@ -153,37 +168,18 @@ venv/
 
 
 # ------------------------------------------------------------
-# 9. IDE and editor files
+# 10. IDE files
 # ------------------------------------------------------------
 
 .vscode/
 .idea/
-
 *.code-workspace
 
 
 # ------------------------------------------------------------
-# 10. Operating system files
+# 11. OS files
 # ------------------------------------------------------------
 
 .DS_Store
 Thumbs.db
 desktop.ini
-
-
-# ------------------------------------------------------------
-# 11. Keep project source and configuration
-# ------------------------------------------------------------
-
-!README.md
-!.gitignore
-
-!/scripts/
-!/board/
-!/drivers/
-!/applications/
-!/docs/
-
-# Keep hardware documentation
-!/docs/hardware/
-!/docs/screenshots/
